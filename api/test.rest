@@ -1,0 +1,109 @@
+###Register
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "email": "admin@gmail.com",
+    "password": "admin"
+}
+
+
+###Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+
+###Logout
+POST http://localhost:5000/api/auth/logout
+Content-Type: application/json
+
+
+###Should be authenticated
+GET http://localhost:5000/api/test/should-be-logged-in
+Content-Type: application/json
+
+
+###Should be admin
+GET http://localhost:5000/api/test/should-be-admin
+Content-Type: application/json
+
+
+###Get users
+GET http://localhost:5000/api/users
+Content-Type: application/json
+
+
+###Get user
+GET http://localhost:5000/api/users/68346778e3f8136a8c44da96
+Content-Type: application/json
+
+
+###Update user
+PUT http://localhost:5000/api/users/68346778e3f8136a8c44da96
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+
+
+
+###Create post
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+
+{
+    "postData": {
+        "title": "title2",
+        "price": 233,
+        "images": [
+            "",
+            ""
+        ],
+        "address": "address2",
+        "city": "city2",
+        "bedroom": 10,
+        "bathroom": 5,
+        "type": "rent",
+        "property": "apartment",
+        "latitude": "51.5074",
+        "longitude": "-0.1278"
+    },
+    "postDetail": {
+        "desc": "Desc 1",
+        "utilities": "Owner is responsible",
+        "pet": "Allowed",
+        "income": "3x income",
+        "size": 88,
+        "school": 1200,
+        "bus": 800,
+        "restaurant": 1500
+    }
+}
+
+
+
+
+###Get posts
+GET  http://localhost:5000/api/posts
+Content-Type: application/json
+
+
+
+###Get post
+GET  http://localhost:5000/api/posts/6837150fae29c6f4fb8f37e3
+Content-Type: application/json
+
+
+
+###Delete post
+DELETE http://localhost:5000/api/posts/6836f5e2fe0e99cf4d518606
+Content-Type: application/json
