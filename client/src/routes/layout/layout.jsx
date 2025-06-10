@@ -1,4 +1,4 @@
-import "./layout.scss";
+import "./layout.scss"
 import Navbar from "../../components/navbar/Navbar.jsx"
 import { Navigate, Outlet } from "react-router-dom";
 import { useContext } from "react";
@@ -14,7 +14,7 @@ function Layout() {
         <Outlet/>
       </div>
     </div>
-  );
+  )
 }
 
 

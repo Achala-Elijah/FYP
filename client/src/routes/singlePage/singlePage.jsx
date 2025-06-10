@@ -27,6 +27,20 @@ function SinglePage() {
   }
 
 
+  const handleMessage = async () => {
+    try{
+      const receiverId = post.userId
+      console.log("receiverId: ", receiverId)
+      await apiRequest.post("/chats", {receiverId})
+      //await apiRequest.post("/messages/"
+
+    }catch(err){
+      console.log(err)
+    }
+    
+  }
+
+
   return (
     <div className="singlePage">
       <div className="details">
@@ -128,7 +142,7 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button>
+            <button onClick={handleMessage}>
               <img src="/chat.png" alt="" />
               Send a Message
             </button>

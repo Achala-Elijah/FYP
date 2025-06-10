@@ -107,3 +107,18 @@ Content-Type: application/json
 ###Delete post
 DELETE http://localhost:5000/api/posts/6836f5e2fe0e99cf4d518606
 Content-Type: application/json
+
+
+###Get chat
+GET http://localhost:5000/api/chats/683cae37eb401f0109fd6c5b
+Content-Type: application/json
+
+
+
+###Add chat
+POST http://localhost:5000/api/chats
+Content-Type: application/json
+
+{
+    "receiverId": "68346778e3f8136a8c44da96"
+}

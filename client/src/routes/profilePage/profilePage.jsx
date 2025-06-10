@@ -79,7 +79,13 @@ function ProfilePage() {
       </div>
       <div className="chatContainer">
         <div className="wrapper">
-          <Chat/>
+        <Suspense fallback={<p>Loading...</p>} errorElement={<p>Failed to load chats!</p>}>
+          <Await resolve={data.chatResponse}>
+            {
+              (chatResponse) =>  <Chat chats={chatResponse.data}/>
+            }
+          </Await>
+        </Suspense>
         </div>
       </div>
     </div>
