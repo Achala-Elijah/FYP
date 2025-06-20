@@ -62,7 +62,7 @@
 
     .bottom {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start/*flex-between*/;
       gap: 10px;
 
       .features {

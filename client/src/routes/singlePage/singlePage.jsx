@@ -27,6 +27,22 @@ function SinglePage() {
   }
 
 
+  const handleMessage = async () => {
+    try{
+      const receiverId = post.userId
+      console.log("receiverId: ", receiverId)
+      await apiRequest.post("/chats", {receiverId})
+      //await apiRequest.post("/messages/"
+      navigate("/profile")
+
+    }catch(err){
+      console.log(err)
+      if(err.response.data == "Chat already exist!!") navigate("/profile")
+    }
+    
+  }
+
+
   return (
     <div className="singlePage">
       <div className="details">
@@ -55,7 +71,22 @@ function SinglePage() {
         <div className="wrapper">
           <p className="title">General</p>
           <div className="listVertical">
-            <div className="feature">
+
+
+          <div className="price" style={{display: "flex", alignItems: "center"}}>$ {post.price}</div>
+
+            <div className="address" style={{display: "flex", alignItems: "center"}}>
+                  <img src="/pin.png" alt="" />
+                  <span>{post.address}</span>
+                </div>
+
+          <div className="size" style={{display: "flex", alignItems: "center", gap:"5px"}}>
+              <img src="/size.png" alt="" />
+              <span>{post.postDetail.size} sqft</span>
+            </div>
+
+            
+            {/*<div className="feature">
               <img src="/utility.png" alt="" />
               <div className="featureText">
                 <span>Utilities</span>
@@ -82,9 +113,9 @@ function SinglePage() {
                 <span>Income Policy</span>
                 <p>{post.postDetail.income}</p>
               </div>
-            </div>
+              </div>*/}
           </div>
-          <p className="title">Sizes</p>
+          {/*<p className="title">Size</p>
           <div className="sizes">
             <div className="size">
               <img src="/size.png" alt="" />
@@ -97,9 +128,9 @@ function SinglePage() {
             <div className="size">
               <img src="/bath.png" alt="" />
               <span>{post.bathroom} bathroom(s)</span>
-            </div>
-          </div>
-          <p className="title">Nearby Places</p>
+              </div>
+          </div>*/}
+          {/*<p className="title">Nearby Places</p>
           <div className="listHorizontal">
             <div className="feature">
               <img src="/school.png" alt="" />
@@ -122,13 +153,13 @@ function SinglePage() {
                 <p>{post.postDetail.restaurant} away</p>
               </div>
             </div>
-          </div>
+            </div>*/}
           <p className="title">Location</p>
           <div className="mapContainer">
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button>
+            <button onClick={handleMessage}>
               <img src="/chat.png" alt="" />
               Send a Message
             </button>
