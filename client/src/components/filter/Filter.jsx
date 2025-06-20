@@ -10,7 +10,7 @@ function Filter() {
     property: searchParams.get("property") || "",
     minPrice: searchParams.get("minPrice") || 0,
     maxPrice: searchParams.get("maxPrice") || 10000000,
-    bedroom: searchParams.get("bedroom") || 1,
+    //bedroom: searchParams.get("bedroom") || 1,
   })
 
 
@@ -47,18 +47,18 @@ function Filter() {
           <label htmlFor="type">Type</label>
           <select name="type" id="type" onChange={handleChange} defaultValue={query.type}
 >
-            <option value="">any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
+            {/*<option value="">any</option>
+            <option value="buy">Rent</option>*/}
+            <option value="rent">Buy</option>
           </select>
         </div>
         <div className="item">
           <label htmlFor="property">Property</label>
           <select name="property" id="property" onChange={handleChange}             defaultValue={query.property}>
-            <option value="">any</option>
+            {/*<option value="">any</option>
             <option value="apartment">Apartment</option>
             <option value="house">House</option>
-            <option value="condo">Condo</option>
+          <option value="condo">Condo</option>*/}
             <option value="land">Land</option>
           </select>
         </div>
@@ -84,7 +84,7 @@ function Filter() {
             defaultValue={query.maxPrice}
           />
         </div>
-        <div className="item">
+        {/*<div className="item">
           <label htmlFor="bedroom">Bedroom</label>
           <input
             type="text"
@@ -94,7 +94,7 @@ function Filter() {
             onChange={handleChange}
             defaultValue={query.bedroom}
           />
-        </div>
+        </div>*/}
         <button onClick={handleFilter}>
           <img src="/search.png" alt="" />
         </button>

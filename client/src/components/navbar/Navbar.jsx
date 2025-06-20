@@ -15,13 +15,8 @@ function Navbar() {
   useEffect(() => {
     if (currentUser) {
       fetch(); // correct usage
-      console.log("Number: ", number)
     }
   }, [currentUser, fetch]);
-
-  
-  console.log("Numberout: ", number)
-
 
 
   return (
@@ -44,7 +39,7 @@ function Navbar() {
             />
             <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
-              {number.number > 0 && <div className="notification">{number.number}</div>}
+              {number > 0 && <div className="notification">{number}</div>}
               <span>Profile</span>
             </Link>
           </div>

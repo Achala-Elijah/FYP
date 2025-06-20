@@ -30,6 +30,7 @@ function NewPostPage() {
     const res = await apiRequest.post("/uploads/post", formData)
     const postsUrl = res.data
     setImages(postsUrl)
+    return postsUrl
   }
 
 
@@ -42,30 +43,30 @@ function NewPostPage() {
     console.log(inputs)
 
     try{
-      await handleImageUpload()
+      const uploadedImages = await handleImageUpload()
       const res = await apiRequest.post("/posts", {
         postData: {
           title: inputs.title,
           price: parseInt(inputs.price),
           address: inputs.address,
           city: inputs.city,
-          bedroom: parseInt(inputs.bedroom),
-          bathroom: parseInt(inputs.bathroom),
-          type: inputs.type,
-          property: inputs.property,
+          bedroom: 0, //parseInt(inputs.bedroom),
+          bathroom: 0,//parseInt(inputs.bathroom),
+          type: "buy",//inputs.type,
+          property: "land",//inputs.property,
           latitude: inputs.latitude,
           longitude: inputs.longitude,
-          images,
+          images: uploadedImages,
         },
         postDetail: {
           desc: value,
-          utilities: inputs.utilities,
-          pet: inputs.pet,
-          income: inputs.income,
+          utilities: "tenant",//inputs.utilities,
+          pet: "not-allowed",//inputs.pet,
+          income: "No income policy",//inputs.income,
           size: parseInt(inputs.size),
-          school: parseInt(inputs.school),
-          bus: parseInt(inputs.bus),
-          restaurant: parseInt(inputs.restaurant),
+          school: 0,//parseInt(inputs.school),
+          bus: 0,//parseInt(inputs.bus),
+          restaurant: 0,//parseInt(inputs.restaurant),
 
         }
       })
@@ -106,14 +107,14 @@ function NewPostPage() {
               <label htmlFor="city">City</label>
               <input id="city" name="city" type="text" />
             </div>
-            <div className="item">
+            {/*<div className="item">
               <label htmlFor="bedroom">Bedroom Number</label>
               <input min={1} id="bedroom" name="bedroom" type="number" />
             </div>
             <div className="item">
               <label htmlFor="bathroom">Bathroom Number</label>
               <input min={1} id="bathroom" name="bathroom" type="number" />
-            </div>
+  </div>*/}
             <div className="item">
               <label htmlFor="latitude">Latitude</label>
               <input id="latitude" name="latitude" type="text" />
@@ -122,7 +123,7 @@ function NewPostPage() {
               <label htmlFor="longitude">Longitude</label>
               <input id="longitude" name="longitude" type="text" />
             </div>
-            <div className="item">
+           {/* <div className="item">
               <label htmlFor="type">Type</label>
               <select name="type">
                 <option value="rent" defaultChecked>
@@ -163,12 +164,12 @@ function NewPostPage() {
                 type="text"
                 placeholder="Income Policy"
               />
-            </div>
+            </div>*/}
             <div className="item">
               <label htmlFor="size">Total Size (sqft)</label>
               <input min={0} id="size" name="size" type="number" />
             </div>
-            <div className="item">
+            {/*<div className="item">
               <label htmlFor="school">School</label>
               <input min={0} id="school" name="school" type="number" />
             </div>
@@ -179,7 +180,7 @@ function NewPostPage() {
             <div className="item">
               <label htmlFor="restaurant">Restaurant</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
-            </div>
+            </div>*/}
             <button className="sendButton">Add</button>
             {err && <span>{err}</span>}
           </form>
@@ -192,7 +193,6 @@ function NewPostPage() {
           </div>)
         }
         <input type="file" multiple onChange={handleFiles}/>
-        <button onClick={handleImageUpload}>upload Image</button>
       </div>
     </div>
   );

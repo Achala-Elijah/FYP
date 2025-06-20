@@ -114,7 +114,7 @@ export const savePost = async (req, res) => {
         if(savedPost){
             await prisma.savedPost.delete({
                 where:{
-                    id: savePost.id
+                    id: savedPost.id
                 }
             })
             res.status(200).json({message: "Post removed from saved list"})
@@ -132,7 +132,7 @@ export const savePost = async (req, res) => {
         }
     }catch(e){
         console.log(e)
-        return res.status(500).json({message: "Failed to save place!"})
+        return res.status(500).json({message: "Failed to save land!"})
     }
 }
 

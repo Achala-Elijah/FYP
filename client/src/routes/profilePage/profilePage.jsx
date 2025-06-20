@@ -3,7 +3,7 @@ import Chat from "../../components/chat/Chat";
 import List from "../../components/list/List";
 import apiRequest from "../../lib/apiRequest";
 import "./profilePage.scss";
-import { Suspense, useContext } from "react";
+import { Suspense, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 
@@ -81,10 +81,12 @@ function ProfilePage() {
         <div className="wrapper">
         <Suspense fallback={<p>Loading...</p>} errorElement={<p>Failed to load chats!</p>}>
           <Await resolve={data.chatResponse}>
-            {
-              (chatResponse) =>  <Chat chats={chatResponse.data}/>
-            }
-          </Await>
+              {(chatResponse) => {
+                const [chats, setChats] = useState(chatResponse.data);
+                return <Chat chats={chats} setChats={setChats} />;
+              }}
+        </Await>
+
         </Suspense>
         </div>
       </div>
