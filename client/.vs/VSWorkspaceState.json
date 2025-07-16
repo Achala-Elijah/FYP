@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\data-items",
+    "\\src\\scenes",
+    "\\src\\scenes\\dashboard",
+    "\\src\\scenes\\global"
+  ],
+  "SelectedNode": "\\src\\components\\barChart.jsx",
+  "PreviewInSolutionExplorer": false
+}
