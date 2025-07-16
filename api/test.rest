@@ -1,27 +1,31 @@
 ###Register
-POST http://localhost:5000/api/auth/register
+POST http://localhost:5000/api/admin/register
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "email": "admin@gmail.com",
-    "password": "admin"
+    "username": "superadmin1",
+    "email": "superadmin1@gmail.com",
+    "password": "superadmin1",
+    "role": "superAdmin"
 }
 
 
 ###Login
-POST http://localhost:5000/api/auth/login
+POST http://localhost:5000/api/admin/login
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "password": "admin"
+    "username": "superadmin",
+    "password": "superadmin"
 }
 
 
-###Logout
-POST http://localhost:5000/api/auth/logout
+
+###GetPosts
+GET http://localhost:5000/api/admin/getPosts
 Content-Type: application/json
+
+
 
 
 ###Should be authenticated
