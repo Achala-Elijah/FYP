@@ -78,6 +78,20 @@
       @include lg {
         width: 105%;
       }
+
+        .records-button {
+            background-color: #ffffff;
+            color: #047857;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+        }
+
+        records-button:hover {
+            background-color: #f7fafc;
+        }
+
+      
     }
   }
 }
