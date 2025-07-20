@@ -3,6 +3,9 @@ import jwt from "jsonwebtoken"
 import prisma from "../lib/prisma.js"
 
 
+
+
+
 export const registerAdmin = async (req, res) => {
     const {username, email, password, role} = req.body
     console.log("role:", req.role)
@@ -103,5 +106,72 @@ export const getPosts = async (req, res) => {
     }catch(e){
         console.log(e)
         res.status(500).json({message: "Failed to get Posts"})
+    }
+}
+
+
+
+
+
+export const getUsers = async (req, res) => {
+    try{
+        const users = await prisma.user.findMany()
+        res.status(200).json(users)
+
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Failed to get users"})
+    }
+}
+
+
+
+
+export const getAdmins = async (req, res) => {
+    try{
+        if(req.role !== "superAdmin") return res.status(401).send("Not Authorized!")
+        const users = await prisma.admin.findMany()
+        res.status(200).json(users)
+
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Failed to get users"})
+    }
+}
+
+
+
+
+
+export const verifyPost = async (req, res) => {
+    const params = req.params.id
+    try{
+        const updatedPost = await prisma.post.update({
+            where: {
+               id: params
+            },
+            data: {
+                status: "verified"
+            }
+        })
+
+        res.status(200).json(updatedPost)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Failed to verify post!"})
+    }
+}
+
+
+
+
+
+
+export const logout = async (req, res) => {
+    try{
+        return res.clearCookie("token").status(200).json({message: "Logout Successfully"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Failed to logout"})
     }
 }

@@ -28,23 +28,23 @@ Content-Type: application/json
 
 
 
-###Should be authenticated
-GET http://localhost:5000/api/test/should-be-logged-in
+###GetUsers
+GET http://localhost:5000/api/admin/getUsers
 Content-Type: application/json
 
 
-###Should be admin
-GET http://localhost:5000/api/test/should-be-admin
+###GetAdmins
+GET http://localhost:5000/api/admin/getAdmins
 Content-Type: application/json
 
 
-###Get users
-GET http://localhost:5000/api/users
+###VerifyPost
+PUT http://localhost:5000/api/admin/verifyPost/6837150fae29c6f4fb8f37e3
 Content-Type: application/json
 
 
-###Get user
-GET http://localhost:5000/api/users/68346778e3f8136a8c44da96
+###Logout
+POST http://localhost:5000/api/admin/logout
 Content-Type: application/json
 
 
