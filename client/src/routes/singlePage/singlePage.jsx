@@ -29,12 +29,13 @@ function SinglePage() {
 
   const handleMessage = async () => {
     try{
+      if(!currentUser){
+        navigate("/login")
+      }
       const receiverId = post.userId
       console.log("receiverId: ", receiverId)
       await apiRequest.post("/chats", {receiverId})
-      //await apiRequest.post("/messages/"
-      navigate("/profile")
-
+      
     }catch(err){
       console.log(err)
       if(err.response.data == "Chat already exist!!") navigate("/profile")
