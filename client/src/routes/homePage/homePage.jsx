@@ -11,14 +11,14 @@ function HomePage() {
     <div className="homePage">
       <div className="textContainer">
         <div className="wrapper">
-          <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
+          <h1 className="title">Welcome to LandLink Ghana</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-            explicabo suscipit cum eius, iure est nulla animi consequatur
-            facilis id pariatur fugit quos laudantium temporibus dolor ea
-            repellat provident impedit!
+              Your trusted digital hub for discovering, listing and managing land in Ghana.
           </p>
           <SearchBar />
+          <button className="records-button">
+            Explore Lands
+          </button>
           <div className="boxes">
             <div className="box">
               <h1>16+</h1>
