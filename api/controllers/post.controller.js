@@ -60,7 +60,7 @@ export const getPost = async (req, res) => {
          }else{
             jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
                 if(err){
-                    userId = null
+                    userId = undefined
                  }else{
                     userId = payload.id
                  }
