@@ -22,7 +22,7 @@ function SearchBar() {
 
   return (
     <div className="searchBar">
-      <div className="type">
+      {/*<div className="type">
         {types.map((type) => (
           <button
             key={type}
@@ -32,7 +32,7 @@ function SearchBar() {
             {type}
           </button>
         ))}
-      </div>
+        </div>*/}
       <form>
         <input type="text" name="city" placeholder="City" onChange={handleChange}/>
         <input
