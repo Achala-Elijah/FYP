@@ -58,9 +58,13 @@ const uploadAvatar = multer({
 
 app.use('/api/avatar', express.static('./public/avatar'));
 app.use('/api/postImage', express.static('./public/post'));
-app.use(cors({
-    origin: "http://localhost:5173",   //use your actual frontend origin
-    credentials: true                 //allow cookies/headers/auth
+
+  app.use(cors({
+    origin: [
+      "http://localhost:5173", //use your actual frontend origin
+      "http://localhost:3000"
+    ],
+    credentials: true //allow cookies/headers/auth
   }));
 app.use(express.json())
 app.use(cookieParser())
