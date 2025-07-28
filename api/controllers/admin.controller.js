@@ -115,7 +115,8 @@ export const getPosts = async (req, res) => {
 
 export const getUsers = async (req, res) => {
     try{
-        const users = await prisma.user.findMany()
+        const results = await prisma.user.findMany()
+        const users = results.map(({ password, ...rest }) => rest);
         res.status(200).json(users)
 
     }catch(err){
