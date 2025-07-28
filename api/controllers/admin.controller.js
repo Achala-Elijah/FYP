@@ -41,13 +41,13 @@ export const registerAdmin = async (req, res) => {
 
 
 export const loginAdmin = async (req, res) => {
-    const {username, password} = req.body
+    const {email, password} = req.body
 
     try{
 
         //CHECK IF USER EXIST
         const admin = await prisma.admin.findUnique({
-            where: {username}
+            where: {email}
         })
         if(!admin) return res.status(401).json({message: "Invalid Credentials!"})
 
