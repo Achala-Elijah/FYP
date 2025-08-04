@@ -41,74 +41,122 @@ function Admins(){
 
 
     return (
-        <div className="flex flex-col bg-[hsl(216,30%,68%)]">
-            <h1 className="flex justify-center items-center text-[2em] mt-[30px]">ADMINS</h1>
-            
-            <div className="h-[50px] flex justify-center items-center gap-[20px] bg-[hsl(216,30%,68%)] py-[0px] mt-[20px]">
-
-            <select className="w-[20%] h-[100%] outline-none rounded-[5px] p-[10px]" value={role} onChange={(e) => setRole(e.target.value)}>
-                    <option value="">Select role</option>
-                    <option value="admin">admin</option>
-                    <option value="superAdmin">superAdmin</option>
-                </select>
-
-                <input type="text" className="w-[20%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="username" 
-                value={username} 
-                onChange={(e) => setUsername(e.target.value)}/>
-
-                <input type="text" className="w-[20%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="email"
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)}/>
-
-
-                <button className="w-[13%] h-[100%] border border-black rounded-[5px] bg-[hsl(256,26%,30%)] text-white hover:bg-[hsl(256,26%,20%)]"
-                onClick={handleSearch}>
-                    Search
-                </button>
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+            {/* Header */}
+            <div className="mb-8">
+                <h1 className="text-4xl font-bold text-gray-900 mb-2">Admin Management</h1>
+                <p className="text-gray-600">Manage admin accounts and permissions</p>
             </div>
-            <div className="mt-[50px]">
-                <div className="flex justify-center items-center bg-[hsl(256,26%,30%)] py-[10px] text-white">
-                    <div className="w-[10%] flex justify-center items-center">
-                        COUNT
+            
+            {/* Search Filters */}
+            <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Search & Filter</h2>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                        <select 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            value={role} 
+                            onChange={(e) => setRole(e.target.value)}
+                        >
+                            <option value="">All Roles</option>
+                            <option value="admin">Admin</option>
+                            <option value="superAdmin">Super Admin</option>
+                        </select>
                     </div>
-                    <div className="w-[30%] flex justify-center items-center">
-                        USERNAME
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                        <input 
+                            type="text" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Enter username" 
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[30%] flex justify-center items-center">
-                        EMAIL
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input 
+                            type="email" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Enter email"
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[15%] flex justify-center items-center">
-                        DATE
-                    </div>
-                    <div className="w-[10%] flex justify-center items-center">
-                        ROLE
+
+                    <div className="flex items-end">
+                        <button 
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                            onClick={handleSearch}
+                        >
+                            🔍 Search Admins
+                        </button>
                     </div>
                 </div>
-                 {/*Users*/}
-                <div className="flex flex-col bg-[hsl(216,30%,68%)]">
-                    {
-                        admins && admins.map((admin, idx) => (
-                            <div className="flex cursor-pointer py-[10px] hover:bg-[hsl(216,30%,48%)]" 
-                            key={idx}
-                            id={admin.id}
-                            onClick={handleLandClick}>
-                                <div className="w-[10%] flex justify-center items-center">
-                                    {idx}
-                                </div>
-                                <div className="w-[35%] flex justify-center items-center">
-                                    {admin.username}
-                                </div>
-                                <div className="w-[35%] flex justify-center items-center">
-                                    {admin.email}
-                                </div>
-                                <div className="w-[20%] flex justify-center items-center">
-                                    {(admin.createdAt).slice(0, 10)}
-                                </div>
+            </div>
+
+            {/* Results Table */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                {/* Table Header */}
+                <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-4">
+                    <div className="grid grid-cols-5 gap-4 font-semibold">
+                        <div className="text-center">#</div>
+                        <div className="text-center">Username</div>
+                        <div className="text-center">Email</div>
+                        <div className="text-center">Join Date</div>
+                        <div className="text-center">Role</div>
                     </div>
+                </div>
+
+                {/* Table Body */}
+                <div className="divide-y divide-gray-200">
+                    {admins && admins.length > 0 ? (
+                        admins.map((admin, idx) => (
+                            <div 
+                                className="grid grid-cols-5 gap-4 px-6 py-4 hover:bg-gray-50 cursor-pointer transition-colors duration-200 group" 
+                                key={idx}
+                                id={admin.id}
+                                onClick={handleLandClick}
+                            >
+                                <div className="text-center text-gray-600 font-medium">{idx + 1}</div>
+                                <div className="text-center">
+                                    <div className="flex items-center justify-center space-x-2">
+                                        <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                            <span className="text-purple-600 font-medium text-sm">
+                                                {admin.username.charAt(0).toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <span className="text-gray-900 font-medium">{admin.username}</span>
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <span className="text-gray-700">{admin.email}</span>
+                                </div>
+                                <div className="text-center text-gray-600">
+                                    {new Date(admin.createdAt).toLocaleDateString()}
+                                </div>
+                                <div className="text-center">
+                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                                        admin.role === 'superAdmin' 
+                                            ? 'bg-red-100 text-red-800' 
+                                            : 'bg-blue-100 text-blue-800'
+                                    }`}>
+                                        {admin.role === 'superAdmin' ? '👑 Super Admin' : '🛡️ Admin'}
+                                    </span>
+                                </div>
+                            </div>
                         ))
-                    }
+                    ) : (
+                        <div className="px-6 py-12 text-center text-gray-500">
+                            <div className="text-6xl mb-4">👤</div>
+                            <h3 className="text-lg font-medium text-gray-900 mb-2">No admins found</h3>
+                            <p>Try adjusting your search criteria or check back later.</p>
+                        </div>
+                    )}
                 </div>
-               
             </div>
         </div>
     )

@@ -132,90 +132,145 @@ function Lands(){
 
 
     return (
-        <div className="flex flex-col bg-[hsl(216,30%,68%)]">
-            <h1 className="flex justify-center items-center text-[2em] mt-[30px]">LANDS</h1>
-            
-            <div className="h-[50px] flex justify-center items-center gap-[20px] bg-[hsl(216,30%,68%)] py-[0px] mt-[20px]">
-
-                <select className="w-[10%] h-[100%] outline-none rounded-[5px] p-[10px]" value={status} onChange={(e) => setStatus(e.target.value)}>
-                    <option value="">Select option</option>
-                    <option value="verified">verified</option>
-                    <option value="progress">progress</option>
-                    <option value="rejected">rejected</option>
-                </select>
-                <input type="text" className="w-[13%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="city" 
-                value={city} 
-                onChange={(e) => setCity(e.target.value)}/>
-
-                <input type="text" className="w-[13%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="owner"
-                value={owner} 
-                onChange={(e) => setOwner(e.target.value)}/>
-
-                <input type="number" className="w-[13%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="min price"
-                value={minPrice} 
-                onChange={(e) => setMinPrice(e.target.value)}/>
-
-                <input type="number" className="w-[13%] h-[100%] outline-none rounded-[5px] p-[10px]" placeholder="max price"
-                value={maxPrice} 
-                onChange={(e) => setMaxPrice(e.target.value)}/>
-
-                <button className="w-[13%] h-[100%] border border-black rounded-[5px] bg-[hsl(256,26%,30%)] text-white hover:bg-[hsl(256,26%,20%)]"
-                onClick={handleSearch}>
-                    Search
-                </button>
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+            {/* Header */}
+            <div className="mb-8">
+                <h1 className="text-4xl font-bold text-gray-900 mb-2">Land Management</h1>
+                <p className="text-gray-600">Manage and monitor all land listings</p>
             </div>
-            <div className="mt-[50px]">
-                <div className="flex bg-[hsl(256,26%,30%)] py-[10px] text-white">
-                    <div className="w-[10%] flex justify-center items-center">
-                        COUNT
+            
+            {/* Search Filters */}
+            <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Search & Filter</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                        <select 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            value={status} 
+                            onChange={(e) => setStatus(e.target.value)}
+                        >
+                            <option value="">All Status</option>
+                            <option value="verified">Verified</option>
+                            <option value="progress">In Progress</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
                     </div>
-                    <div className="w-[15%] flex justify-center items-center">
-                        CITY
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
+                        <input 
+                            type="text" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Enter city" 
+                            value={city} 
+                            onChange={(e) => setCity(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[10%] flex justify-start items-center">
-                        PRICE
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Owner</label>
+                        <input 
+                            type="text" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Owner name"
+                            value={owner} 
+                            onChange={(e) => setOwner(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[20%] flex justify-center items-center">
-                        STATUS
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Min Price</label>
+                        <input 
+                            type="number" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Min price"
+                            value={minPrice} 
+                            onChange={(e) => setMinPrice(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[20%] flex justify-center items-center">
-                        DATE
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Max Price</label>
+                        <input 
+                            type="number" 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Max price"
+                            value={maxPrice} 
+                            onChange={(e) => setMaxPrice(e.target.value)}
+                        />
                     </div>
-                    <div className="w-[20%] flex justify-center items-center">
-                        OWNER
+
+                    <div className="flex items-end">
+                        <button 
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                            onClick={handleSearch}
+                        >
+                            🔍 Search
+                        </button>
                     </div>
                 </div>
-                 {/*LANDS*/}
-                <div className="flex flex-col bg-[hsl(216,30%,68%)]">
-                    {
-                        lands && lands.map((land, idx) => (
-                            <div className="flex cursor-pointer py-[10px] hover:bg-[hsl(216,30%,48%)]" 
-                            key={idx}
-                            id={land.id}
-                            onClick={handleLandClick}>
-                                <div className="w-[10%] flex justify-center items-center">
-                                    {idx}
-                                </div>
-                                <div className="w-[15%] flex justify-center items-center">
-                                    {land.city}
-                                </div>
-                                <div className="w-[10%] flex justify-start items-center">
-                                    ₵ {land.price}
-                                </div>
-                                <div className="w-[20%] flex justify-center items-center">
-                                    {land.status}
-                                </div>
-                                <div className="w-[20%] flex justify-center items-center">
-                                    {(land.createdAt).slice(0, 10)}
-                                </div>
-                                <div className="w-[20%] flex justify-center items-center">
-                                    {land.user.username}
-                                </div>
+            </div>
+
+            {/* Results Table */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                {/* Table Header */}
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4">
+                    <div className="grid grid-cols-6 gap-4 font-semibold">
+                        <div className="text-center">#</div>
+                        <div className="text-center">City</div>
+                        <div className="text-center">Price</div>
+                        <div className="text-center">Status</div>
+                        <div className="text-center">Date</div>
+                        <div className="text-center">Owner</div>
                     </div>
+                </div>
+
+                {/* Table Body */}
+                <div className="divide-y divide-gray-200">
+                    {lands && lands.length > 0 ? (
+                        lands.map((land, idx) => (
+                            <div 
+                                className="grid grid-cols-6 gap-4 px-6 py-4 hover:bg-gray-50 cursor-pointer transition-colors duration-200 group" 
+                                key={idx}
+                                id={land.id}
+                                onClick={handleLandClick}
+                            >
+                                <div className="text-center text-gray-600 font-medium">{idx + 1}</div>
+                                <div className="text-center">
+                                    <span className="text-gray-900 font-medium">{land.city}</span>
+                                </div>
+                                <div className="text-center">
+                                    <span className="text-green-600 font-bold">₵{land.price?.toLocaleString()}</span>
+                                </div>
+                                <div className="text-center">
+                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                                        land.status === 'verified' 
+                                            ? 'bg-green-100 text-green-800' 
+                                            : land.status === 'progress' 
+                                            ? 'bg-yellow-100 text-yellow-800'
+                                            : 'bg-red-100 text-red-800'
+                                    }`}>
+                                        {land.status === 'verified' ? '✅ Verified' : 
+                                         land.status === 'progress' ? '⏳ In Progress' : '❌ Rejected'}
+                                    </span>
+                                </div>
+                                <div className="text-center text-gray-600">
+                                    {new Date(land.createdAt).toLocaleDateString()}
+                                </div>
+                                <div className="text-center">
+                                    <span className="text-gray-900 font-medium">{land.user?.username}</span>
+                                </div>
+                            </div>
                         ))
-                    }
+                    ) : (
+                        <div className="px-6 py-12 text-center text-gray-500">
+                            <div className="text-6xl mb-4">🏘️</div>
+                            <h3 className="text-lg font-medium text-gray-900 mb-2">No lands found</h3>
+                            <p>Try adjusting your search criteria or check back later.</p>
+                        </div>
+                    )}
                 </div>
-               
             </div>
         </div>
     )
