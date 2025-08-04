@@ -1,32 +1,30 @@
 @import "../../responsive.scss";
 
+// Modern layout for real estate website
 .layout {
-  height: 100vh;
-  max-width: 1366px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #ffffff;
 
-  @include lg {
-    // background-color: rgb(247, 210, 196);
-    max-width: 1280px;
-  }
-
-  @include md {
-    // background-color: rgb(186, 203, 234);
-    max-width: 768px;
-  }
-
-  @include sm {
-    // background-color: rgb(239, 200, 200);
-    max-width: 640px;
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
   }
 
   .content {
-    // flex: 1;
-    height: calc(100vh - 100px);
+    flex: 1;
+    width: 100%;
+    overflow-x: hidden;
+    
+    // Remove the fixed height to allow content to flow naturally
+    min-height: calc(100vh - 80px);
+    
+    @include sm {
+      min-height: calc(100vh - 70px);
+    }
   }
 }
