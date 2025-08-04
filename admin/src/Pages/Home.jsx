@@ -25,9 +25,9 @@ function Home(){
     }, [userInfo, setUserInfo])
     
     return(
-        <div className="flex h-[100vh]">
+        <div className="flex h-[100vh] bg-gray-50">
             <Sidebar />
-            <div className="flex-1 overflow-y-scroll">
+            <div className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-100">
                 {
                     selectedOption === "dashboard" && <Dashboard />
                 }
@@ -47,7 +47,7 @@ function Home(){
                     selectedOption === "create" && <CreateAdmin />
                 }
                 {
-                    selectedOption === "settings" && <div>settings</div>
+                    selectedOption === "settings" && <div className="p-8"><div className="bg-white rounded-lg shadow-lg p-6"><h2 className="text-2xl font-bold text-gray-900">Settings</h2><p className="text-gray-600 mt-2">Settings page coming soon...</p></div></div>
                 }
                 {
                     selectedOption === "client" && <UserProfile />

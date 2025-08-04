@@ -40,7 +40,15 @@ function App() {
   }, [userInfo, setUserInfo])
 
   if(loading){
-    return (<div>Loading...</div>)
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md mx-4">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto mb-6"></div>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Loading Admin Panel</h2>
+          <p className="text-gray-600">Please wait while we set things up...</p>
+        </div>
+      </div>
+    )
   }
 
   return(
