@@ -49,7 +49,7 @@ function Card({ item }) {
         </div>
         
         <div className="property-card__features">
-          {item.bedroom && (
+          {/* {item.bedroom && (
             <div className="property-card__feature">
               <img src="/bed.png" alt="" />
               <span>{item.bedroom} {item.bedroom === 1 ? 'Bedroom' : 'Bedrooms'}</span>
@@ -60,7 +60,7 @@ function Card({ item }) {
               <img src="/bath.png" alt="" />
               <span>{item.bathroom} {item.bathroom === 1 ? 'Bathroom' : 'Bathrooms'}</span>
             </div>
-          )}
+          )} */}
           {item.size && (
             <div className="property-card__feature">
               <img src="/size.png" alt="" />
@@ -74,7 +74,8 @@ function Card({ item }) {
             {item.type || 'Property'}
           </div>
           <div className="property-card__status">
-            {item.property === 'rent' ? 'For Rent' : 'For Sale'}
+            For Sale
+            {/* {item.property === 'rent' ? 'For Rent' : 'For Sale'} */}
           </div>
         </div>
       </div>

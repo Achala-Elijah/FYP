@@ -27,13 +27,13 @@ function Navbar() {
             <img src="/logo.png" alt="LandLink Ghana Logo" />
             <span>LandLink Ghana</span>
           </a>
-          <a href="/" className="navbar__link"><img src="/home.png" alt="" className="navbar__icon"/>Home</a>
-          <a href="/about" className="navbar__link"><img src="/about.png" alt="" className="navbar__icon"/>About</a>
-          <a href="/contact" className="navbar__link"><img src="/contact.png" alt="" className="navbar__icon"/>Contact</a>
-          <a href="/agents" className="navbar__link"><img src="/agents.png" alt="" className="navbar__icon"/>Agents</a>
+          <a href="/" className="navbar__link">Home</a> 
+          <a href="/about" className="navbar__link">About</a>
+          <a href="/contact" className="navbar__link">Contact</a>
+          {/* <a href="/agents" className="navbar__link"><img src="/agents.png" alt="" className="navbar__icon"/>Agents</a> */}
         </div>
-        <div className="navbar__right">
-          <a href="/list-property" className="navbar__cta">List Your Property</a>
+         <div className="navbar__right">
+         {/* <a href="/list-property" className="navbar__cta">List Your Property</a> */}
           {currentUser ? (
             <div className="navbar__user">
               <img

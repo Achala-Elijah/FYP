@@ -31,7 +31,7 @@ function SearchBar() {
         </div>
 
         <div className="search-bar__type-selector">
-          {types.map((type) => (
+          {/* {types.map((type) => (
             <button
               key={type}
               onClick={() => switchType(type)}
@@ -44,7 +44,7 @@ function SearchBar() {
               />
               {type === 'buy' ? 'Buy' : 'Rent'}
             </button>
-          ))}
+          ))} */}
         </div>
 
         <form className="search-bar__form">
@@ -100,9 +100,9 @@ function SearchBar() {
 
         <div className="search-bar__quick-filters">
           <span className="search-bar__quick-label">Popular searches:</span>
-          <button className="search-bar__quick-btn">Apartments in Accra</button>
-          <button className="search-bar__quick-btn">Houses in East Legon</button>
-          <button className="search-bar__quick-btn">Rentals under ₵2000</button>
+          <button className="search-bar__quick-btn">Lands in Accra</button>
+          <button className="search-bar__quick-btn">Lands in East Legon</button>
+          <button className="search-bar__quick-btn">Lands under ₵2000</button>
         </div>
       </div>
     </div>
