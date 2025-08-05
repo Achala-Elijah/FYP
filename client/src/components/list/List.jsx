@@ -31,13 +31,13 @@ function List({posts}){
         )}
       </div>
       
-      {posts && posts.length > 0 && (
+      {/* {posts && posts.length > 0 && (
         <div className="property-list__footer">
           <button className="property-list__load-more">
             Load More Properties
           </button>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

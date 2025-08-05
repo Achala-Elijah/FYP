@@ -71,7 +71,7 @@ function Card({ item }) {
         
         <div className="property-card__footer">
           <div className="property-card__type">
-            {item.type || 'Property'}
+            {/* {item.type || 'Property'} */}BUY
           </div>
           <div className="property-card__status">
             For Sale

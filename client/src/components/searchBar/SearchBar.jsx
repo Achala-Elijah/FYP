@@ -24,9 +24,9 @@ function SearchBar() {
     <div className="search-bar">
       <div className="search-bar__container">
         <div className="search-bar__header">
-          <h2 className="search-bar__title">Find Your Dream Property</h2>
+          <h2 className="search-bar__title">Find Your Dream Land</h2>
           <p className="search-bar__subtitle">
-            Discover the perfect home or investment opportunity
+            Discover the perfect land for investment opportunity
           </p>
         </div>
 
