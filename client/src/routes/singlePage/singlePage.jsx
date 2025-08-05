@@ -43,6 +43,8 @@ function SinglePage() {
     
   }
 
+  console.log(post)
+
 
   return (
     <div className="singlePage">
