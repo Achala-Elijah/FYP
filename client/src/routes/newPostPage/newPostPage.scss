@@ -1,13 +1,15 @@
 .newPostPage {
-  height: 100%;
+  height: 100vh;
   display: flex;
+  padding: 50px;
+  background-color: #f8f9fa;
 
   .formContainer {
     flex: 3;
     overflow: scroll;
 
     .wrapper {
-      margin: 30px 50px 100px 0px;
+      margin: 0px;
 
       form {
         display: flex;
@@ -59,7 +61,7 @@
 
   .sideContainer {
     flex: 2;
-    background-color: #fcf5f3;
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 20px;
