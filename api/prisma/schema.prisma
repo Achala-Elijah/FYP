@@ -80,6 +80,7 @@ model User {
   username   String      @unique
   password   String
   avatar     String?
+  phone      String?      @unique
   createdAt  DateTime    @default(now())
   post       Post[]
   savedPosts SavedPost[]
