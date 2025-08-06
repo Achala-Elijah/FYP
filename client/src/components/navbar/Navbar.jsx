@@ -24,8 +24,8 @@ function Navbar() {
       <div className="navbar__container">
         <div className="navbar__left">
           <a href="/" className="navbar__logo" aria-label="LandLink Ghana Home">
-            <img src="/logo.png" alt="LandLink Ghana Logo" />
-            <span>LandLink Ghana</span>
+            <img src="/landlink-logo.png" alt="LandLink Ghana Logo" />
+            <span></span>
           </a>
           <a href="/" className="navbar__link">Home</a> 
           <a href="/about" className="navbar__link">About</a>
