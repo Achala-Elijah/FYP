@@ -1,0 +1,26 @@
+/* SVG icons placeholder file for the modern real estate UI */
+
+/* Note: Replace these placeholder text files with actual SVG or PNG icons */
+
+/*
+Icons needed for the new professional UI:
+- home.png (for navbar Home link)
+- about.png (for navbar About link) 
+- contact.png (for navbar Contact link)
+- agents.png (for navbar Agents link)
+- sale.png (for Buy/Sale type selector)
+- rent.png (for Rent type selector)
+- price.png (for price input fields)
+- house-icon.png (for hero floating card)
+- verified.png (for verified properties feature)
+- support.png (for 24/7 support feature)
+- legal.png (for legal assistance feature)
+- finance.png (for financing options feature)
+- no-properties.png (for empty state)
+
+You can find free real estate icons from:
+- Heroicons (https://heroicons.com/)
+- Feather Icons (https://feathericons.com/)
+- Font Awesome (https://fontawesome.com/)
+- Material Icons (https://fonts.google.com/icons)
+*/

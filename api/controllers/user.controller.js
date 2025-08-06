@@ -108,9 +108,18 @@ export const savePost = async (req, res) => {
                     userId: tokenUserId,
                     postId
                 }
+            },
+            include: {
+                user: {
+                    select: {
+                        id: true
+                }
             }
+        }
         })
         
+        
+
         if(savedPost){
             await prisma.savedPost.delete({
                 where:{
@@ -120,6 +129,22 @@ export const savePost = async (req, res) => {
             res.status(200).json({message: "Post removed from saved list"})
 
         }else{
+            const post = await prisma.post.findUnique({
+                where: {
+                    id: postId
+                },
+                include: {
+                    user:{
+                        select: {
+                            id: true
+                        }
+                    }
+                }
+            })
+
+            if(post && post.user.id === tokenUserId){
+                return res.status(404).json({message: "Cannot save your own post!"})
+            }
             await prisma.savedPost.create({
                 data: {
                     userId: tokenUserId,
@@ -133,6 +158,33 @@ export const savePost = async (req, res) => {
     }catch(e){
         console.log(e)
         return res.status(500).json({message: "Failed to save land!"})
+    }
+}
+
+
+
+
+
+export const savedPosts = async (req, res) => {
+    const tokenUserId = req.userId
+    try{
+        
+        const saved = await prisma.savedPost.findMany({
+            where: {
+                userId: tokenUserId
+            },
+            include: {
+                post: true
+            }
+        })
+
+        const savedPosts = saved.map((item) => item.post)
+        
+        return res.status(200).json(savedPosts)
+
+        }catch(e){
+            console.log(e)
+            return res.status(500).json({message: "Failed to get saved posts!"})
     }
 }
 

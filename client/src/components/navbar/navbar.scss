@@ -1,156 +1,242 @@
 @import "../../responsive.scss";
 
-nav {
-  height: 100px;
+// Modern real estate navbar redesign
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  min-height: 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
-  a {
-    transition: all 0.4s ease;
+  &__container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+  }
 
-    @include sm {
-      display: none;
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
     }
+    span {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a202c;
+    }
+  }
 
+  // Add icon styling for nav links
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+    vertical-align: middle;
+    filter: grayscale(1) brightness(0.7);
+    transition: filter 0.2s;
+  }
+
+  &__link {
+    color: #444;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-right: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
     &:hover {
-      scale: 1.05;
-    }
-  }
-
-  .left {
-    flex: 3;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-
-    .logo {
-      font-weight: bold;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      img {
-        width: 28px;
-      }
-
-      span {
-        @include md {
-          display: none;
-        }
-
-        @include sm {
-          display: initial;
-        }
+      background: #f3f4f6;
+      color: #0077ff;
+      .navbar__icon {
+        filter: none;
       }
     }
   }
-  .right {
-    flex: 2;
+
+  &__right {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    background-color: #fcf5f3;
-    height: 100%;
+    gap: 18px;
+    position: relative;
+  }
 
-    @include md {
-      background-color: transparent;
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f3f4f6;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e2e8f0;
     }
-
-    a {
-      padding: 12px 24px;
-      margin: 20px;
+    span {
+      font-weight: 500;
+      color: #222;
+      font-size: 1rem;
     }
-
-    .user{
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-
-      img{
-        width: 40px;
-        height: 40px;
+    .profile {
+      margin-left: 10px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-weight: 500;
+      color: #0077ff;
+      border: 1px solid #e2e8f0;
+      position: relative;
+      transition: background 0.2s, color 0.2s;
+      &:hover {
+        background: #f3f4f6;
+        color: #005fcc;
+      }
+      .notification {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #ff3b3b;
+        color: #fff;
         border-radius: 50%;
-        object-fit: cover;
-        margin-right: 20px;
-      }
-
-      span{
-        @include sm{
-          display: none;
-        }
-      }
-
-      .profile{
-        padding: 12px 24px;
-        background-color: #fece51;
-        cursor: pointer;
-        border: none;
-        position: relative;
-        
-        .notification{
-          position: absolute;
-          top: -8px;
-          right: -8px;
-          background-color: red;
-          color: white;
-          border-radius: 50%;
-          width: 26px;
-          height: 26px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 700;
+        box-shadow: 0 2px 8px 0 rgba(255,59,59,0.13);
       }
     }
+  }
 
-    .register {
-      background-color: #fece51;
-      height: 50%;
-      border-radius: 5px;
+  &__cta {
+    background: linear-gradient(90deg, #0077ff 60%, #005fcc 100%);
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px 0 rgba(0,119,255,0.08);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    letter-spacing: 0.5px;
+    border: none;
+    &:hover {
+      background: linear-gradient(90deg, #005fcc 60%, #0077ff 100%);
+      box-shadow: 0 4px 16px 0 rgba(0,119,255,0.13);
+      transform: translateY(-2px) scale(1.04);
     }
+  }
 
-    .menuIcon {
-      display: none;
-      z-index: 999;
-
-      img {
-        width: 36px;
-        height: 36px;
-        cursor: pointer;
-      }
-
-      @include sm {
-        display: inline;
-      }
+  // Mobile styles
+  .menuIcon {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    img {
+      width: 32px;
+      height: 32px;
+      filter: grayscale(1) brightness(0.7);
+      transition: filter 0.2s;
     }
+    &:hover img {
+      filter: none;
+    }
+    @include sm {
+      display: inline-block;
+    }
+  }
 
-    .menu {
-      position: absolute;
-      top: 0;
-      right: -50%;
-      background-color: black;
-      color: white;
-      height: 100vh;
-      width: 50%;
-      transition: all 1s ease;
+  .menu {
+    display: none;
+    @include sm {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-
+      align-items: flex-end;
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      background: #fff;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.13);
+      border-radius: 12px;
+      padding: 24px 18px;
+      z-index: 1000;
+      min-width: 180px;
+      gap: 12px;
+      transition: all 0.3s;
+      opacity: 0;
+      pointer-events: none;
       &.active {
-        right: 0;
+        opacity: 1;
+        pointer-events: auto;
       }
-
-      @include sm {
-        a {
-          display: initial;
+      a {
+        color: #222;
+        font-size: 1.1rem;
+        padding: 8px 0;
+        text-decoration: none;
+        border-radius: 6px;
+        width: 100%;
+        transition: background 0.2s, color 0.2s;
+        &:hover {
+          background: #f3f4f6;
+          color: #0077ff;
         }
       }
+    }
+  }
+
+  @include sm {
+    &__container {
+      padding: 0 10px;
+    }
+    &__left {
+      gap: 10px;
+    }
+    &__link, &__cta {
+      font-size: 0.95rem;
+      padding: 7px 10px;
+    }
+    &__logo span {
+      display: none;
     }
   }
 }
