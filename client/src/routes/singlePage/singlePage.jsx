@@ -85,7 +85,7 @@ function SinglePage() {
                 <span>{post.user.username}</span>
               </div>
             </div>
-            <div className="bottom">{post.postDetail.desc} Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis tenetur molestiae excepturi. Saepe dolor aspernatur ratione fugiat nihil corrupti, at quaerat sunt nesciunt animi earum fugit dolore incidunt dicta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nisi provident commodi, ab rerum ad sapiente veniam earum ipsam natus aliquam, ea iste incidunt soluta, quam hic. Velit, consequatur aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente delectus ducimus ipsum voluptate unde, quidem rerum magnam voluptates quae cupiditate nihil sint architecto accusamus perferendis, quaerat aspernatur suscipit labore odio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, fuga dicta at dolorum reiciendis excepturi tenetur doloribus necessitatibus fugiat quam? Magni nihil quas provident, unde sapiente cupiditate consequatur. Error, ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, ea! Optio obcaecati sit amet officia ratione architecto, facilis in id iste beatae saepe temporibus, nobis voluptatem nisi fuga iusto sapiente!</div>
+            <div className="bottom" dangerouslySetInnerHTML={{ __html: post.postDetail.desc }}></div>
           </div>
         </div>
       </div>

@@ -4,12 +4,7 @@ import Card from"../card/Card"
 function List({posts}){
   return (
     <div className='property-list'>
-      <div className="property-list__header">
-        <h2 className="property-list__title">Featured Properties</h2>
-        <p className="property-list__subtitle">
-          Discover your dream property from our curated selection
-        </p>
-      </div>
+      
       
       <div className="property-list__grid">
         {posts && posts.length > 0 ? (
@@ -24,8 +19,8 @@ function List({posts}){
           ))
         ) : (
           <div className="property-list__empty">
-            <img src="/no-properties.png" alt="No properties" />
-            <h3>No Properties Found</h3>
+            <img src="/no-properties.png" alt="" />
+            <h3>No Lands Found</h3>
             <p>Try adjusting your search criteria or browse all properties.</p>
           </div>
         )}

@@ -36,17 +36,16 @@ function HomePage() {
               <span>🏡 Trusted by 10,000+ Customers</span>
             </div>
             <h1 className="hero__title">
-              Find Your Perfect Property in Ghana
+              Find Your Perfect Land in Ghana
             </h1>
             <p className="hero__subtitle">
-              Discover premium real estate opportunities across Ghana. From luxurious homes 
-              to profitable investments, we connect you with your dream property.
+            Welcome to Landlink Ghana! Discover top land listings in Ghana. We make searching for perfect land for business or residential purpose easy and simple for you.
             </p>
             
             <div className="hero__stats">
               <div className="hero__stat">
                 <span className="hero__stat-number">5,000+</span>
-                <span className="hero__stat-label">Properties Listed</span>
+                <span className="hero__stat-label">Lands Listed</span>
               </div>
               <div className="hero__stat">
                 <span className="hero__stat-number">1,200+</span>
@@ -79,6 +78,12 @@ function HomePage() {
 
       {/* Featured Properties Section */}
       <section className="featured-properties">
+      <div className="property-list__header">
+        <h2 className="property-list__title">Land Listings</h2>
+        <p className="property-list__subtitle">
+          Discover your dream Land from our curated selection
+        </p>
+      </div>
         <div className="featured-properties__container">
           {loading ? (
             <div className="loading-state">
@@ -92,7 +97,7 @@ function HomePage() {
           {posts.length > 6 && (
             <div className="view-all-section">
               <a href="/list" className="view-all-btn">
-                View All Properties
+                View All Lands
                 <img src="/arrow.png" alt="" />
               </a>
             </div>
@@ -105,7 +110,7 @@ function HomePage() {
         <div className="features__container">
           <div className="features__header">
             <h2>Why Choose LandLink Ghana?</h2>
-            <p>We provide comprehensive real estate solutions tailored for the Ghanaian market</p>
+            <p>We offer expert land sourcing, verification, and development services across Ghana.</p>
           </div>
           
           <div className="features__grid">
@@ -113,7 +118,7 @@ function HomePage() {
               <div className="feature-card__icon">
                 <img src="/verified.png" alt="" />
               </div>
-              <h3>Verified Properties</h3>
+              <h3>Verified Lands</h3>
               <p>All listings are thoroughly verified by our expert team for authenticity and accuracy.</p>
             </div>
             
