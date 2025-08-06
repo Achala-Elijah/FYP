@@ -9,8 +9,24 @@ import apiRequest from "../../lib/apiRequest";
 function SinglePage() {
   const {currentUser} = useContext(AuthContext)
   const post = useLoaderData()
-  const [saved, setSaved] = useState(post.isSaved)
+  const [saved, setSaved] = useState(false)
   const navigate = useNavigate()
+
+
+  const isSaved = async () => {
+    try{
+      const res = await apiRequest.get(`/users/savedPosts`, {withCredentials: true})
+      if(res.status == 200){
+        const data = res.data
+        const isIn = data.some(item => item.id === post.id)
+        setSaved(isIn)
+      }
+    }catch(e){
+      console.log(e)
+    }
+    
+
+  }
 
 
   const handleSave = async () => {
@@ -20,7 +36,7 @@ function SinglePage() {
     }
     try{
       await apiRequest.post("/users/save", {postId: post.id})
-      console.log("done")
+      console.log("Post saved successfully")
     }catch(e){
       console.log(e)
       setSaved(p => !p)
@@ -36,6 +52,7 @@ function SinglePage() {
       const receiverId = post.userId
       console.log("receiverId: ", receiverId)
       await apiRequest.post("/chats", {receiverId})
+      navigate("/profile")
       
     }catch(err){
       console.log(err)
@@ -44,7 +61,8 @@ function SinglePage() {
     
   }
 
-  console.log(post)
+
+  isSaved()
 
 
   return (

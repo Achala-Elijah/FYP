@@ -5,9 +5,9 @@ import { useSearchParams } from "react-router-dom";
 function Filter() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState({
-    type: searchParams.get("type") || "",
+    type: "",
     city: searchParams.get("city") || "",
-    property: searchParams.get("property") || "",
+    property: "",
     minPrice: searchParams.get("minPrice") || 0,
     maxPrice: searchParams.get("maxPrice") || 10000000,
     //bedroom: searchParams.get("bedroom") || 1,
