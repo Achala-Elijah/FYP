@@ -1,7 +1,7 @@
 import "./newPostPage.scss";
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom"
-import ReactQuill from 'react-quill';
+import ReactQuill, { displayName } from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Include Quill styles
 import apiRequest from "../../lib/apiRequest";
 
@@ -21,6 +21,17 @@ function NewPostPage() {
       setFiles([...e.target.files])
   }
 
+  const handleDocs = (e) => {
+    //setFiles([...e.target.files])
+}
+
+const clickFile = () => {
+  document.getElementById("files").click()
+}
+
+const clickDocs = () => {
+  document.getElementById("docs").click()
+}
 
   const handleImageUpload = async () => {
     const formData = new FormData()
@@ -192,7 +203,11 @@ function NewPostPage() {
             <img style={{width: "100%", height: "100%"}} src={URL.createObjectURL(file)}/>
           </div>)
         }
-        <input type="file" multiple onChange={handleFiles}/>
+        <input type="file" id="files" multiple onChange={handleFiles} style={{display: "none"}}/>
+        <button onClick={clickFile} style={{padding: "13px", borderRadius: "5px", fontSize: "1em", backgroundColor: "#10B981"}}>Upload file(s)</button>
+
+        <input type="file" id="docs" multiple onChange={handleDocs} style={{display: "none"}}/>
+        <button onClick={clickDocs} style={{padding: "13px", borderRadius: "5px", fontSize: "1em", backgroundColor: "#60A5FA"}}>Upload document(s)</button>
       </div>
     </div>
   );

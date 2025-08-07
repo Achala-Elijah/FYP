@@ -5,6 +5,11 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import {AuthContext} from "../../context/AuthContext.jsx"
 import apiRequest from "../../lib/apiRequest";
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaHourglassHalf,
+} from "react-icons/fa";
 
 function SinglePage() {
   const {currentUser} = useContext(AuthContext)
@@ -105,6 +110,22 @@ function SinglePage() {
           <div className="size" style={{display: "flex", alignItems: "center", gap:"5px"}}>
               <img src="/size.png" alt="" />
               <span>{post.postDetail.size} sqft</span>
+            </div>
+
+            <div className="size" style={{display: "flex", alignItems: "center", gap:"5px", color:
+      post.status === "progress"
+        ? "gold"
+        : post.status === "verified"
+        ? "green"
+        : post.status === "rejected"
+        ? "red"
+        : "black", fontSize: "1.5em"}}>
+              {/*<img src="/size.png" alt="" />*/}
+              <span>
+                {post.status == "verified" && <div><FaCheckCircle /> Verified</div>}
+                {post.status == "rejected" && <div><FaTimesCircle /> Rejected</div>}
+                {post.status == "progress" && <div><FaHourglassHalf /> Progress</div>}
+              </span>
             </div>
 
             

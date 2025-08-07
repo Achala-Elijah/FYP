@@ -9,6 +9,7 @@ export const getPosts = async (req, res) => {
     try{
         const posts = await prisma.post.findMany({
             where: {
+                status: "verified",
                 city: query.city || undefined,
                 type: query.type || undefined,
                 property: query.property || undefined,

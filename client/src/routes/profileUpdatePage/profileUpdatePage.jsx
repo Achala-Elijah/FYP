@@ -84,8 +84,9 @@ function ProfileUpdatePage() {
         </form>
       </div>
       <div className="sideContainer">
-        <img src={avatar || "/noavatar.png"} alt="" className="avatar" />
-        <input type="file" name="avatar" onChange={handleAvatar}/>
+        <img src={avatar || "/noavatar.png"} alt="" className="avatar"/>
+        <input type="file" name="avatar" onChange={handleAvatar} style={{display: "none"}}/>
+        <button style={{padding: "13px", fontSize: "1em", borderRadius: "5px", backgroundColor: "#10B981"}}>Upload Image</button>
       </div>
     </div>
   );
