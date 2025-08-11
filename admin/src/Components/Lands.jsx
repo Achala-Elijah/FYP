@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import apiRequest from "../Libs/apiRequest"
 import { LANDS_URL } from "../Utils/Constants"
 import { useUserStore } from "../Utils/Store"
@@ -98,6 +98,33 @@ function Lands(){
 
     const [lands, setLands] = useState([])
     const {setSelectedOption, selectedOption, land, setLand} = useUserStore()
+
+    useEffect(() => {
+        const handleSearch = async () => {
+            const data = {
+                id: id || null,
+                city: city || null,
+                status: status || null,
+                date: date || null,
+                owner: owner || null,
+                minPrice: minPrice || null,
+                maxPrice: maxPrice || null
+            }
+    
+            try{
+                const res = await apiRequest.get(LANDS_URL, {params: data, withCredentials: true})
+                if(res.status === 200 && res.data){
+                    setLands(res.data)
+                }
+                console.log(res.data)
+            }catch(e){
+                console.log(e)
+            }
+        }
+
+        handleSearch()
+        
+    }, [])
 
     const handleSearch = async () => {
         const data = {
