@@ -85,13 +85,24 @@ function Dashboard(){
         return total
     }
 
+    const rejectedLands = () => {
+        let total = 0;
+        const len = lands.length
+        for( let i = 0; i < len; ++i){
+            if(lands[i].status === "rejected"){
+                ++total
+            }
+        }
+        return total
+    }
+
     const compute = async () => {
         if(done){
         const total_lands = lands.length
         const total_users = users.length
         const total_admins = admins.length
         const total_verified = verifiedLands()
-        const total_rejected = total_lands - total_verified
+        const total_rejected = rejectedLands()
         const total_verified_percent = total_lands > 0 ? (total_verified/total_lands) * 100 : 0
         const total_rejected_percent = total_lands > 0 ? (total_rejected/total_lands) * 100 : 0
         const average_price = total_lands > 0 ? totalPrice()/total_lands : 0
