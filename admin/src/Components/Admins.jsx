@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import apiRequest from "../Libs/apiRequest"
 import { ADMINS_URL } from "../Utils/Constants"
 
@@ -11,6 +11,31 @@ function Admins(){
     const [role, setRole] = useState("")
 
     const [admins, setAdmins] = useState([])
+
+    useEffect(() => {
+        const handleSearch = async () => {
+            const data = {
+                id: id || null,
+                username: username || null,
+                email: email || null,
+                date: date || null,
+                role: role || null,
+            }
+    
+            try{
+                const res = await apiRequest.get(ADMINS_URL, {params: data, withCredentials: true})
+                if(res.status === 200 && res.data){
+                    setAdmins(res.data)
+                }
+                console.log(res.data)
+            }catch(e){
+                console.log(e)
+            }
+        }
+
+        handleSearch()
+
+    }, [])
 
     const handleSearch = async () => {
         const data = {

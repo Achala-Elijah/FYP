@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import apiRequest from "../Libs/apiRequest"
 import { USERS_URL } from "../Utils/Constants"
 import { useUserStore } from "../Utils/Store"
@@ -12,6 +12,30 @@ function Users(){
 
     const [users, setUsers] = useState([])
     const {setClient, setSelectedOption, selectedOption, client} = useUserStore()
+
+
+    useEffect(() => {
+        const handleSearch = async () => {
+            const data = {
+                id: id || null,
+                username: username || null,
+                email: email || null,
+                date: date || null,
+            }
+    
+            try{
+                const res = await apiRequest.get(USERS_URL, {params: data, withCredentials:true})
+                if(res.status === 200 && res.data){
+                    setUsers(res.data)
+                }
+                console.log(res.data)
+            }catch(e){
+                console.log(e)
+            }
+        }
+
+        handleSearch()
+    }, [])
 
     const handleSearch = async () => {
         const data = {
