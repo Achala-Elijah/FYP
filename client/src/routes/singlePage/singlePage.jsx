@@ -128,6 +128,17 @@ function SinglePage() {
               </span>
             </div>
 
+             <div>
+              {currentUser.id === post.userId && <h2>Documents</h2>}
+              {currentUser.id === post.userId && post?.docs?.map((doc, index) => (
+                <div key={index}>
+                  <a href={doc} target="_blank" rel="noopener noreferrer">
+                    Document {index + 1}
+                  </a>
+                </div>
+              ))}
+            </div>
+
             
             {/*<div className="feature">
               <img src="/utility.png" alt="" />

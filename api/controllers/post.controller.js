@@ -86,7 +86,7 @@ export const addPost = async (req, res) => {
 
 
 
-
+//Not implemented yet
 export const updatePost = async (req, res) => {
 
     try{

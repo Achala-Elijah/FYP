@@ -21,6 +21,7 @@ model Post {
   title      String
   price      Int
   images     String[]
+  docs     String[]
   address    String
   city       String
   bedroom    Int
