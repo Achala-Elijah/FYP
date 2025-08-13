@@ -43,6 +43,19 @@ const postStorage = multer.diskStorage({
 
 
 
+const docStorage = multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, "./public/doc"); // Folder where files will be stores
+            },
+                
+        filename: (req, file, cb) => {
+          const name = Date.now() + "-" + file.originalname;
+                      cb(null, name);
+                      }
+                    });
+
+
+
 const uploadAvatar = multer({
     storage: avatarStorage,      // How and where to store uploaded files
     });
@@ -53,11 +66,17 @@ const uploadAvatar = multer({
       });
 
 
+const uploadDoc = multer({
+        storage: docStorage,      // How and where to store uploaded files
+        });
+
+
 
 
 
 app.use('/api/avatar', express.static('./public/avatar'));
 app.use('/api/postImage', express.static('./public/post'));
+app.use('/api/doc', express.static('./public/doc'));
 
   app.use(cors({
     origin: [
@@ -87,6 +106,15 @@ app.post("/api/uploads/post", uploadPost.array("postImage"), (req, res) => {
   console.log(postImagesUrl)
   res.status(200).json(postImagesUrl)
 })
+
+
+app.post("/api/uploads/docs", uploadDoc.array("postDocs"), (req, res) => {
+  const files = req.files
+  const postImagesUrl = files.map((file) => `http://localhost:5000/api/doc/${file.filename}`)
+  console.log(postImagesUrl)
+  res.status(200).json(postImagesUrl)
+})
+
 
 app.use("/api/posts", postRoute)
 app.use("/api/auth", authRoute)

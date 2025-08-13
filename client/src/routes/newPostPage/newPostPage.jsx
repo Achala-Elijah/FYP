@@ -10,6 +10,7 @@ function NewPostPage() {
   const [value, setValue] = useState('');
   const [err, setErr] = useState('');
   const [files, setFiles] = useState([]);
+  const [docs, setDocs] = useState([]);
   const [images, setImages] = useState([]);
   const navigate = useNavigate()
 
@@ -22,7 +23,7 @@ function NewPostPage() {
   }
 
   const handleDocs = (e) => {
-    //setFiles([...e.target.files])
+    setDocs([...e.target.files])
 }
 
 const clickFile = () => {
@@ -44,6 +45,17 @@ const clickDocs = () => {
     return postsUrl
   }
 
+  const handleDocUpload = async () => {
+    const formData = new FormData()
+    docs.map((doc) => {
+      formData.append("postDocs", doc)
+    })
+    const res = await apiRequest.post("/uploads/docs", formData)
+    const postsUrl = res.data
+    setDocs(postsUrl)
+    return postsUrl
+  }
+
 
 
   const handleSubmit = async (e) => {
@@ -55,6 +67,8 @@ const clickDocs = () => {
 
     try{
       const uploadedImages = await handleImageUpload()
+      const uploadedDocs = await handleDocUpload()
+      //console.log(uploadedDocs)
       const res = await apiRequest.post("/posts", {
         postData: {
           title: inputs.title,
@@ -68,6 +82,7 @@ const clickDocs = () => {
           latitude: inputs.latitude,
           longitude: inputs.longitude,
           images: uploadedImages,
+          docs: uploadedDocs,
         },
         postDetail: {
           desc: value,

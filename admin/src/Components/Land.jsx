@@ -182,6 +182,17 @@ function Land(){
                                         {landInfo?.status}
                                     </span>
                                 </div>
+
+                                <div>
+                                    <h1 className="font-bold text-xl text-center">Documents</h1>
+                                    {landInfo?.docs?.map((doc, index) => (
+                                        <div key={index}>
+                                        <a href={doc} target="_blank" rel="noopener noreferrer" className="text-blue-400">
+                                            Document {index + 1}
+                                        </a>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
